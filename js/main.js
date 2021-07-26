@@ -1,15 +1,26 @@
 // Il computer deve generare 16 numeri casuali (le nostre bombe) tra 1 e 100.
-generatore();
-utente();
 let myArray = [];
+let myNumUtente = [];
+generatore();
 console.log(myArray);
+var punteggio = 0;
+utente();
+console.log(myNumUtente);
+console.log(punteggio);
 
-utente = prompt("Inserisci numero");
 
+
+
+
+
+
+
+
+// function// function// function// function// function// function// function// function// function// function// function
 
 function generatore () {
-    let randomico;
     for(let i = 1;i <= 16;i++){
+        let randomico;
         do{
             randomico = random(100,1);
         }while(myArray.includes(randomico));
@@ -22,24 +33,31 @@ function random (max,min) {
 }
 
 function utente () {
-    for (let i = 1;i < 84;i++){
+    for (let i = 1;i < 85;i++){
         do{
-            volte = parseInt(prompt("Inserisci numero")); 
+            volte = parseInt(prompt("Inserisci numeri tra 1 e 100")); 
             if (volte < 1 || volte > 100){
-                alert("il numero inserito non vale")
-                
+                alert("il numero inserito non è valido")
             }
-            else if (myArray.includes(volte))
+            else if (myNumUtente.includes(volte))
             {
                 alert("hai già inserito questo numero")
-                return volte
             }
-            else if (myArray.includes(randomico)){
-
+            else if (myArray.includes(volte)){
+                alert("hai perso")
+                punteggio -= 1;
+                return
             }
-            
+            else if (myNumUtente.length == 85){
+                alert("hai vinto")
+                return
+            }
+            else
+            {
+                myNumUtente.push(volte)
+                punteggio += 1;
+            }
         }while(volte >= 1 || volte <= 100 || isNaN(volte))
-        myArray.push(volte)
     } 
 }
 
