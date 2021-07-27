@@ -1,11 +1,15 @@
 let bombe = [];
-let myNumUtente = []; 
+let myNumUtente = [];
 generatore();
 console.log(bombe);
 let punteggio = 0;
 creaCampo(100);
+let condizioni = 84;
+console.log(punteggio)
 
 
+// function// function// function// function// function// function// function// function// function// function
+    
 
 
 function creaCampo (celle) {
@@ -24,27 +28,34 @@ function creaCampo (celle) {
 document.getElementById("campo").addEventListener("click",
     function (e) {
         console.log(e.target.dataset.cella);
-        let element = document.querySelectorAll("[data-cella='" + e.target.dataset.cella + "']");
+        let action = parseInt(e.target.dataset.cella);
+        let element = document.querySelectorAll("[data-cella='" + action + "']");
         console.log(element[0]);
-        
-        if(e.target.dataset.cella == bombe) {
-            element[0].classList.add("red");  
+
+        if(bombe.includes(action)) {
+            element[0].classList.add("red");
+            alert("you lose");
+            location.reload();
         }
-        else
+        else if (myNumUtente.length == condizioni) {
+            element[0].classList.add("green");
+            alert("you won");
+        }
+        else 
         {
-            element[0].classList.add("green");  
+            element[0].classList.add("green");
+            myNumUtente.push(action);
+            punteggio+=1;
         }
 }
 )
 
-
-
-
-
-
-
 // // Il computer deve generare 16 numeri casuali (le nostre bombe) tra 1 e 100.
-// let punteggio = 0;
+// let myArray = [];
+// let myNumUtente = [];
+// generatore();
+// console.log(myArray);
+// var punteggio = 0;
 // utente();
 // console.log(myNumUtente);
 // console.log(punteggio);
